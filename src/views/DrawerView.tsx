@@ -28,6 +28,7 @@ type DrawerOptions = {
   edgeWidth: number;
   hideStatusBar?: boolean;
   style?: ViewStyle;
+  innerSceneStyle?: () => object,
   gestureHandlerProps?: React.ComponentProps<typeof PanGestureHandler>;
 };
 
@@ -138,7 +139,7 @@ export default class DrawerView extends React.PureComponent<Props, State> {
     );
   };
 
-  private renderContent = ({ progress }) => {
+  private renderContent = ({ progress: any }) => {
     let { lazy, navigation } = this.props;
     let { loaded } = this.state;
     let { routes } = navigation.state;
