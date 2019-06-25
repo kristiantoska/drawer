@@ -138,7 +138,7 @@ export default class DrawerView extends React.PureComponent<Props, State> {
     );
   };
 
-  private renderContent = ({ progress ) => {
+  private renderContent = ({ progress }) => {
     let { lazy, navigation } = this.props;
     let { loaded } = this.state;
     let { routes } = navigation.state;
