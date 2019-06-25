@@ -28,7 +28,7 @@ type DrawerOptions = {
   edgeWidth: number;
   hideStatusBar?: boolean;
   style?: ViewStyle;
-  innerSceneStyle?: (any) => object,
+  innerSceneStyle?: (progress: any) => object,
   gestureHandlerProps?: React.ComponentProps<typeof PanGestureHandler>;
 };
 
