@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Dimensions, StyleSheet, ViewStyle } from 'react-native';
 import { SceneView } from '@react-navigation/core';
 import { ScreenContainer } from 'react-native-screens';
+import Animated from 'react-native-reanimated';
 
 import * as DrawerActions from '../routers/DrawerActions';
 import DrawerSidebar, { ContentComponentProps } from './DrawerSidebar';
@@ -137,16 +138,18 @@ export default class DrawerView extends React.PureComponent<Props, State> {
     );
   };
 
-  private renderContent = () => {
+  private renderContent = ({ progress ) => {
     let { lazy, navigation } = this.props;
     let { loaded } = this.state;
     let { routes } = navigation.state;
+                           
+    let component;                       
 
     if (this.props.navigationConfig.unmountInactiveRoutes) {
       let activeKey = navigation.state.routes[navigation.state.index].key;
       let descriptor = this.props.descriptors[activeKey];
 
-      return (
+      component = (
         <SceneView
           navigation={descriptor.navigation}
           screenProps={this.props.screenProps}
@@ -154,7 +157,7 @@ export default class DrawerView extends React.PureComponent<Props, State> {
         />
       );
     } else {
-      return (
+      component = (
         <ScreenContainer style={styles.content}>
           {routes.map((route, index) => {
             if (lazy && !loaded.includes(index)) {
@@ -184,6 +187,12 @@ export default class DrawerView extends React.PureComponent<Props, State> {
           })}
         </ScreenContainer>
       );
+    }
+
+    if (this.props.navigationConfig.innerSceneStyle) {
+        return <Animated.View style={innerSceneStyle}>{component}</Animated.View>
+    } else {
+        return component;
     }
   };
 
