@@ -190,7 +190,7 @@ export default class DrawerView extends React.PureComponent<Props, State> {
     }
 
     if (this.props.navigationConfig.innerSceneStyle) {
-        return <Animated.View style={innerSceneStyle}>{component}</Animated.View>
+        return <Animated.View style={innerSceneStyle(progress)}>{component}</Animated.View>
     } else {
         return component;
     }
