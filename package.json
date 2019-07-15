@@ -1,5 +1,5 @@
 {
-  "name": "react-navigation-drawer",
+  "name": "react-native-custom-drawer",
   "version": "2.0.0-alpha.3",
   "description": "Drawer navigator component for React Navigation",
   "main": "lib/commonjs/index.js",
